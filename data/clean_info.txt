@@ -1,0 +1,12 @@
+From running Get_clean_dataset.py
+
+Total flights read in: 61,300,192
+After removing bad columns: 60,103,213
+After removing canceled flights: 60,103,213
+After selecting airports: 14,154,950
+After selecting carriers: 9,444,451
+After removing bad delay sums: 7,004,914
+Number of flights in final dataset: 7,004,914
+
+9,444,451 flights in clean_data.csv
+7,004,914 flights in clean_data_good_sums_10.csv
