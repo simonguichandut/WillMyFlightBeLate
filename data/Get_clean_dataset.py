@@ -41,12 +41,12 @@ UA	United Air Lines Inc.
 B6	JetBlue Airways
 AS	Alaska Airlines Inc.
 NK	Spirit Air Lines
-9F	Frontier Airlines Inc.
+F9	Frontier Airlines Inc. (actually not included because bug)
 '''
 
 airports = [10397,13930,11298,11292,12892,14107,14771,11057,12266,12889,14747,13487,11433,13204,10721,12953,11618,12478,14869,11278]
 airports = [str(a) for a in airports]
-carriers = ["WN","DL","AA","OO","UA","B6","AS","NK","9F"]
+carriers = ['WN','DL','AA','OO','UA','B6','AS','NK']
 
 Years = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
 
