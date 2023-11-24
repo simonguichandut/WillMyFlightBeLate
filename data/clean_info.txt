@@ -1,11 +1,10 @@
 Total flights read in: 71,983,943
+After removing canceled flights: 70,551,187
 After removing bad columns: 70,381,007
-After removing canceled flights: 70,381,007
-After selecting airports: 16,472,257
-After selecting carriers: 10,909,889
-Number of flights in final dataset: 10,909,889
-
-10,909,889 flights in clean_data.csv
+After selecting origin airports: 37,607,252
+After selecting destination airports: 15,998,183
+After selecting carriers: 13,764,723
+Number of flights in final dataset: 13,764,723
 
 Import like this:
 df = pd.read_csv("../data/clean_data.csv", parse_dates=[1])
