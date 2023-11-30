@@ -7,3 +7,4 @@ data/*.csv
 !data/airport_stats.csv
 !data/carrier_stats.csv
 data/*/*.csv
+models
