@@ -35,7 +35,7 @@ def predict(air_time,carrier_,origin_,dest_,datetime_,model):
 	if is_leap: dt_yr=366.
 	else: dt_yr=365.
 	frac_yr=(datetime_-datetime.datetime(datetime_.year,1,1))/datetime.timedelta(days=dt_yr)
-	frac_day=(datetime_-datetime.datetime(datetime_.year,datetime_.month,1))/datetime.timedelta(days=1)
+	frac_day=(datetime_-datetime.datetime(datetime_.year,datetime_.month,datetime_.day,0))/datetime.timedelta(days=1)
 	
 	day_frac_sin,day_frac_cos=np.sin(2.*np.pi*frac_day/1.0),np.cos(2.*np.pi*frac_day/1.0)
 	year_frac_sin,year_frac_cos=np.sin(2.*np.pi*frac_yr/1.0),np.cos(2.*np.pi*frac_yr/1.0)
