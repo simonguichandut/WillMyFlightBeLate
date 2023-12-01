@@ -1,6 +1,6 @@
 # Why Is My Flight Late?
 
-This is our data science project for the Erdos Institute data science bootcamp 2023. We will be using machine learning to figure out Why Is My Flight Late?!!
+This is our data science project for the Erdos Institute data science bootcamp 2023. We will be using machine learning to answer the question, Why is My Flight Late?
 
 ## Team
 - Ketan Sand
@@ -16,3 +16,13 @@ Here is a plot showing 11 years data of departure delay (in mins) from the busie
 
 
 ## Write a brief description of our analysis here
+Stage one of our analysis is to clean and prepare the data for training. 
+
+In /data we include our cleaning and analysis scripts.
+
+In /notebooks we include the following:
+- Exoploratory.ipynb contains our preliminary analysis tracking the fraction of delayed flights as functions of origin, destinations, time of year, time of day.
+- Classification-final.ipynb contains the classification script using logistic regression, random forest, and XGBoost.
+- Hyperparameter_tuning_future.ipynb contains preliminary hyperparameter tuning.
+
+In /models we include the final trained models from our analysis.
