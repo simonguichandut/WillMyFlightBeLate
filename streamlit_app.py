@@ -3,26 +3,18 @@
 Will my flight be late?
 """
 
+debug = False
+
 import streamlit as st
 import pandas as pd
+import datetime
 
-airport_stats = pd.read_csv("data/airport_stats.csv", nrows=21)
-carrier_stats = pd.read_csv("data/carrier_stats.csv")
-
-# Airports and carriers trained on
-# Copied from data/Get_clean_dataset.py
-airports = [10397,13930,11298,11292,12892,14107,14771,11057,12266,12889,14747,13487,11433,13204,10721,12953,11618,12478,14869,11278]
-carriers = ['WN','DL','AA','OO','UA','B6','AS','NK']
-
-# Convert to names
-airports = [airport_stats.loc[airport_stats['ID']==id, 'Name'].values[0] for id in airports]
-carriers = [carrier_stats.loc[carrier_stats['Code']==c, 'Name'].values[0] for c in carriers]
-
+from app_interface import *
+model = load_model()
 
 ##############################################################
 
 st.title("Will My Flight Be Late?")
-#st.markdown("# Will My Flight Be Late?")
 
 #flight = st.text_input("Your flight number: ")
 
@@ -52,12 +44,22 @@ with col2:
     time = st.time_input("Departure Time", value=None)
     airtime = st.slider("Flight duration (hours)", 0.5, 12., value=1., step=0.25)
 
-# st.write(carrier)
-# st.write(orig)
-# st.write(dest)
-# st.write(date)
-# st.write(time)
-# st.write(airtime)
+# Testing input
+if debug:
+    if carrier:
+        carrier_code = carrier_stats.loc[carrier_stats['Name']==carrier, 'Code'].values[0]
+        st.write(carrier,':', carrier_code)
+    if orig:
+        orig_id = airport_stats.loc[airport_stats['Name']==orig, 'ID'].values[0]
+        st.write(orig,':', orig_id)
+    if dest:
+        dest_id = airport_stats.loc[airport_stats['Name']==dest, 'ID'].values[0]
+        st.write(dest,':', dest_id)
+    if date and time:
+        full_datetime = datetime.datetime.combine(date,time)
+        st.write(date,time, full_datetime)
+    if airtime:
+        st.write(airtime)
 
 check_button = st.button("Evaluate", type="primary")
 
@@ -68,8 +70,9 @@ def check():
         st.write("Enter all info!")
         return
 
-    import random
-    if random.random() > 0.5:
+    # import random
+    # if random.random() > 0.5:
+    if predict(model, airtime, carrier_code, orig_id, dest_id, full_datetime):
         st.markdown("<h1 style='text-align: center; color: red;'>YES!</h1>", unsafe_allow_html=True)
         st.text("Our model thinks your flight will be more than 15 minutes late")
     else:
@@ -96,6 +99,6 @@ if check_button: check()
 
 # About section
 st.markdown("### About this app")
-st.write("Current model: random")
-st.write("By Ketan Sand, Simon Guichandut, Tim Hallatt.")
+st.write("Current model: Random Forest with 10 estimators")
+st.markdown("By [Ketan Sand](https://www.linkedin.com/in/ketansand/), [Simon Guichandut](https://www.linkedin.com/in/simonguichandut/) and [Tim Hallatt](https://www.linkedin.com/in/tim-hallatt-904539273/) (links to our linkedin).")
 st.write("We thank the Erdös Institute and our mentor Gleb Zhelezov.")
