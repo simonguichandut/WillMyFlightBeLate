@@ -43,22 +43,14 @@ with col2:
     time = st.time_input("Departure Time", value=None)
     airtime = st.slider("Flight duration (hours)", 0.5, 12., value=1., step=0.25)
 
-# Testing input
-if debug:
-    if carrier:
-        carrier_code = carrier_stats.loc[carrier_stats['Name']==carrier, 'Code'].values[0]
-        st.write(carrier,':', carrier_code)
-    if orig:
-        orig_id = airport_stats.loc[airport_stats['Name']==orig, 'ID'].values[0]
-        st.write(orig,':', orig_id)
-    if dest:
-        dest_id = airport_stats.loc[airport_stats['Name']==dest, 'ID'].values[0]
-        st.write(dest,':', dest_id)
-    if date and time:
-        full_datetime = datetime.datetime.combine(date,time)
-        st.write(date,time, full_datetime)
-    if airtime:
-        st.write(airtime)
+if carrier:
+    carrier_code = carrier_stats.loc[carrier_stats['Name']==carrier, 'Code'].values[0]
+if orig:
+    orig_id = airport_stats.loc[airport_stats['Name']==orig, 'ID'].values[0]
+if dest:
+    dest_id = airport_stats.loc[airport_stats['Name']==dest, 'ID'].values[0]
+if date and time:
+    full_datetime = datetime.datetime.combine(date,time)
 
 check_button = st.button("Evaluate", type="primary")
 
@@ -68,6 +60,14 @@ def check():
     if carrier is None or orig is None or dest is None or date is None or time is None:
         st.write("Enter all info!")
         return
+    
+    # Testing input
+    if debug:
+        st.write(carrier,':', carrier_code)
+        st.write(orig,':', orig_id)
+        st.write(dest,':', dest_id)
+        st.write(date,time, full_datetime)
+        st.write(airtime)
 
     # import random
     # if random.random() > 0.5:
