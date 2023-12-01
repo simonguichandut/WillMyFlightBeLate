@@ -6,8 +6,6 @@ import calendar
 import numpy as np
 from load_mod import load_mod
 
-model = load_mod()
-
 carrier_ids=np.load('../data/carrier_ids.npy',allow_pickle=True)
 dest_ids=np.load('../data/dest_ids.npy',allow_pickle=True)
 origin_ids=np.load('../data/origin_ids.npy',allow_pickle=True)
@@ -15,7 +13,7 @@ origin_ids=np.load('../data/origin_ids.npy',allow_pickle=True)
 min_airtime=19.
 max_airtime=588.
 
-def predict(air_time,carrier_,origin_,dest_,datetime_):
+def predict(air_time,carrier_,origin_,dest_,datetime_,model):
 	
 	# one-hot
 	# correct for one-hot dropping first value
