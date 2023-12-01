@@ -8,3 +8,5 @@ data/*.csv
 !data/carrier_stats.csv
 data/*/*.csv
 models
+
+Notebooks/*0.ipynb
