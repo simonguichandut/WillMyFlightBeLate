@@ -15,7 +15,7 @@ Here is a plot showing 11 years data of departure delay (in mins) from the busie
 ![Atlanta_all](https://github.com/simonguichandut/WhyIsMyFlightLate/assets/55292615/5a75b47d-84a3-4f7e-aeb3-db2d8b5cda09)
 
 
-## Write a brief description of our analysis here
+## The Format of this Repo
 Stage one of our analysis is to clean and prepare the data for training. 
 
 In /data we include our cleaning and analysis scripts.
