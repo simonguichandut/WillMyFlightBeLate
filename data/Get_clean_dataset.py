@@ -90,7 +90,7 @@ for year in Years:
         # Airport
         df = df[df['ORIGIN_AIRPORT_ID'].astype(str).isin(airports)]
         N_slice_orig_airports += len(df)
-        
+
         df = df[df['DEST_AIRPORT_ID'].astype(str).isin(airports)]
         N_slice_dest_airports += len(df)
 

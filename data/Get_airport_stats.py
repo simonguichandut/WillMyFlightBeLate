@@ -10,7 +10,7 @@ import datetime
 import gc
 
 Years = np.arange(2012,2024,1)
- 
+
 exclude_pandemic = True
 if exclude_pandemic:
     Years = np.setdiff1d(Years, [2020,2021])
@@ -78,7 +78,7 @@ for year in Years:
                 airport_data.loc[airport_data['ID']==id, 'N_delayed_from_2023'] += N_delayed_from
                 airport_data.loc[airport_data['ID']==id, 'N_to_2023'] += N_to
                 airport_data.loc[airport_data['ID']==id, 'N_delayed_to_2023'] += N_delayed_to
-            
+
         gc.collect()
 
 # Calculate frac columns
