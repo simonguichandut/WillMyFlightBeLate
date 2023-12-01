@@ -14,6 +14,8 @@ min_airtime=19.
 max_airtime=588.
 
 def predict(air_time,carrier_,origin_,dest_,datetime_,model):
+    dest_ = str(dest_)
+    origin_=str(origin_)
 	
 	# one-hot
 	# correct for one-hot dropping first value
@@ -22,11 +24,11 @@ def predict(air_time,carrier_,origin_,dest_,datetime_,model):
 		carrier_ids_=[str(x) for x in carrier_ids[1:]]
 		carrier[carrier_ids_.index(carrier_)]=1.0
 	dest=np.zeros(19)
-	if dest_!=dest_ids[0]:
+	if dest_!=str(dest_ids[0]):
 		dest_ids_=[str(x) for x in dest_ids[1:]]
 		dest[dest_ids_.index(dest_)]=1.0
 	origin=np.zeros(19)
-	if origin_!=origin_ids[0]:
+	if origin_!=str(origin_ids[0]):
 		origin_ids_=[str(x) for x in origin_ids[1:]]
 		origin[origin_ids_.index(origin_)]=1.0
 	
