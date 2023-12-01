@@ -4,7 +4,6 @@ This is our data science project for the Erdos Institute data science bootcamp 2
 
 ## Team
 - Ketan Sand
-- Marcus Merryfield
 - Simon Guichandut
 - Tim Hallatt
 
