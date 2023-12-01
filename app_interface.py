@@ -1,6 +1,6 @@
 
 import pickle
-import joblib
+# import joblib
 from sklearn.ensemble import RandomForestClassifier
 import datetime
 import calendar
@@ -23,8 +23,8 @@ min_airtime=19.
 max_airtime=588.
 
 def load_model():
-	# model = pickle.load(open('models/RF_2022_2023.pickle','rb'))
-	model = joblib.load('models/RF_2022_2023.joblib')
+	model = pickle.load(open('models/RF_2022_2023.pickle','rb'))
+	# model = joblib.load('models/RF_2022_2023.joblib')
 	return model
 
 def predict(model, air_time, carrier_, origin_, dest_, datetime_):

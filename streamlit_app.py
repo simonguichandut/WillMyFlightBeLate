@@ -6,7 +6,6 @@ Will my flight be late?
 debug = False
 
 import streamlit as st
-import pandas as pd
 import datetime
 
 from app_interface import *
