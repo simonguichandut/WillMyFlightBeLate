@@ -1,23 +1,8 @@
 
-import pickle
 import joblib
-from sklearn.ensemble import RandomForestClassifier
 import datetime
 import calendar
-import pandas as pd
 import numpy as np
-
-airport_stats = pd.read_csv("data/airport_stats.csv", nrows=21)
-carrier_stats = pd.read_csv("data/carrier_stats.csv")
-
-# Airports and carriers trained on
-# Copied from data/Get_clean_dataset.py
-airports_ids = [10397,13930,11298,11292,12892,14107,14771,11057,12266,12889,14747,13487,11433,13204,10721,12953,11618,12478,14869,11278]
-carriers_codes = ['WN','DL','AA','OO','UA','B6','AS','NK']
-
-# Convert to names using the stats file
-airports = [airport_stats.loc[airport_stats['ID']==id, 'Name'].values[0] for id in airports_ids]
-carriers = [carrier_stats.loc[carrier_stats['Code']==c, 'Name'].values[0] for c in carriers_codes]
 
 min_airtime=19.
 max_airtime=588.
@@ -28,21 +13,21 @@ def load_model():
 	model = joblib.load('models/RF_2022_2023.joblib')
 	return model
 
-def predict(model, air_time, carrier_, origin_, dest_, datetime_):
+def predict(model, air_time, carrier_, origin_, dest_, datetime_, carrier_codes, airport_ids):
 	
 	# one-hot
 	# correct for one-hot dropping first value
 	carrier_onehot = np.zeros(7)
-	if carrier_!=carriers_codes[0]:
-		carrier_onehot[carriers_codes.index(carrier_)] = 1.0
+	if carrier_!=carrier_codes[0]:
+		carrier_onehot[carrier_codes.index(carrier_)] = 1.0
 
 	orig_onehot = np.zeros(19)
-	if origin_!= airports_ids[0]:
-		orig_onehot[airports_ids.index(origin_)] = 1.0
+	if origin_!= airport_ids[0]:
+		orig_onehot[airport_ids.index(origin_)] = 1.0
 	
 	dest_onehot = np.zeros(19)
-	if dest_ != airports_ids[0]:
-		dest_onehot[airports_ids.index(dest_)] = 1.0
+	if dest_ != airport_ids[0]:
+		dest_onehot[airport_ids.index(dest_)] = 1.0
 
 	# frac yr, frac day
 	is_leap = calendar.isleap(datetime_.year)
