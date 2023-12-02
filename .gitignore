@@ -10,7 +10,6 @@ data/*.csv
 data/*/*.csv
 
 models/*
-!models/RF_2022_2023.pickle
 !models/*.joblib
 
 Notebooks/*0.ipynb
